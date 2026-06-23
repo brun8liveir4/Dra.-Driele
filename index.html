@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dra. Driele Gonçalves | Clínica Odontológica</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* ================= VÁRIAVEIS DE CORES ================= */
+        :root {
+            --bg-color: #f7f4f0; /* Fundo principal off-white */
+            --text-dark: #3a332e; /* Cor do texto escuro */
+            --text-light: #6e645d; /* Cor do texto secundário */
+            --btn-dark: #584c43; /* Cor dos botões escuros */
+            --btn-hover: #40362f;
+            --cta-bg: #a19283; /* Fundo da barra de agendamento */
+            --footer-bg: #4a413a; /* Fundo do rodapé */
+            --white: #ffffff;
+        }
+
+        /* ================= RESET E ESTILOS GERAIS ================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Tipografia */
+        h1, h2, h3 {
+            font-weight: 500;
+            color: var(--text-dark);
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 24px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-dark {
+            background-color: var(--btn-dark);
+            color: var(--white);
+        }
+
+        .btn-dark:hover {
+            background-color: var(--btn-hover);
+        }
+
+        .btn-light {
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+        }
+
+        .btn-light:hover {
+            background-color: var(--white);
+        }
+
+        /* ================= HEADER ================= */
+		header {
+			padding: 15px 0;
+			/* Efeito Glassmorphism */
+			background: rgba(247, 244, 240, 0.85); 
+			backdrop-filter: blur(12px); 
+			-webkit-backdrop-filter: blur(12px); 
+			/* Menu Fixo */
+			position: sticky; 
+			top: 0;
+			z-index: 1000;
+			border-bottom: 1px solid rgba(161, 146, 131, 0.15); 
+			box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03); 
+			transition: all 0.3s ease;
+		}
+
+		.header-content {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+
+		.logo {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+		}
+
+		.logo-img {
+			max-height: 60px; 
+			/* Voltei para auto. Assim o logo mantém a proporção sem quebrar o layout! */
+			width: 200px; 
+			max-width: 100%;
+		}
+
+		.logo-text h3 {
+			font-size: 1.2rem;
+			margin-bottom: 0;
+		}
+
+		.logo-text p {
+			font-size: 0.8rem;
+			color: var(--text-light);
+			margin: 0;
+		}
+
+		.menu-toggle {
+			display: none;
+			font-size: 1.5rem;
+			background: none;
+			border: none;
+			cursor: pointer;
+			color: var(--text-dark);
+		}
+		
+
+        /* ================= HERO SECTION ================= */
+        .hero {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 40px 0 80px 0;
+        }
+
+        .hero-text {
+            flex: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+        }
+
+        .hero-text h1 span {
+            display: block;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--text-light);
+        }
+
+        .hero-text p {
+            margin-bottom: 20px;
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: right;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 20px 20px 0 0; /* Arredondado em cima igual ao mockup */
+            object-fit: cover;
+        }
+
+        /* ================= ESPECIALIDADES ================= */
+        .specialties {
+            padding: 60px 0;
+        }
+
+        .specialties-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .specialty-card i {
+            font-size: 3rem;
+            color: var(--text-light);
+            margin-bottom: 15px;
+        }
+
+        .specialty-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        .specialty-card p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* ================= CTA BANNER ================= */
+        .cta-banner {
+            background-color: var(--cta-bg);
+            border-radius: 12px;
+            padding: 40px 50px;
+            margin: 40px auto;
+            color: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cta-text {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .cta-text i {
+            font-size: 3rem;
+        }
+
+        .cta-text h3 {
+            color: var(--white);
+            font-size: 1.4rem;
+            margin-bottom: 5px;
+        }
+
+        .cta-text p {
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+        /* ================= GALERIA (NOSSA CLÍNICA) ================= */
+        .gallery {
+            padding: 60px 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            grid-template-rows: auto auto;
+            gap: 15px;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 12px;
+        }
+        
+        /* Ajuste fino para dar o efeito assimétrico do mockup na 2ª linha */
+        .gallery-row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 15px;
+            grid-column: span 2;
+        }
+
+        /* ================= ONDE ESTAMOS ================= */
+        .location {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            padding: 60px 0;
+            background-color: var(--white);
+            border-radius: 20px;
+            margin: 40px auto;
+            padding: 40px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.02);
+        }
+
+        .location-text {
+            flex: 1;
+        }
+
+        .location-text h3 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .location-text p {
+            color: var(--text-light);
+            margin-bottom: 25px;
+        }
+
+        .location-map {
+            flex: 1;
+        }
+
+		.location-map iframe {
+			border-radius: 12px;
+			width: 100%;
+		}
+
+        /* ================= FOOTER ================= */
+        footer {
+            background-color: var(--footer-bg);
+            color: var(--white);
+            padding: 40px 0 20px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+		.footer-logo-img {
+			max-height: 80px; /* O logo do rodapé costuma ter mais destaque */
+			width: 200px;
+		}
+
+        .footer-logo .logo-icon {
+            color: var(--white);
+        }
+
+        .footer-logo-text {
+            text-align: left;
+        }
+
+        .footer-logo-text h3 {
+            color: var(--white);
+            font-size: 1.1rem;
+            margin-bottom: 0;
+        }
+
+        .footer-logo-text p {
+            font-size: 0.8rem;
+            color: #d1c8c1;
+        }
+
+        .footer-contact {
+            display: flex;
+            gap: 30px;
+        }
+
+        .footer-contact span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+        }
+
+        .copyright {
+            font-size: 0.8rem;
+            color: #d1c8c1;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+		
+
+        /* ================= RESPONSIVO (MOBILE) ================= */
+        @media (max-width: 768px) {
+            .header-btn {
+                display: none; 
+            }
+
+            .menu-toggle {
+                display: none; 
+            }
+
+            .header-content {
+                justify-content: center;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 20px 0 40px 0;
+            }
+
+            /* Adicionando margens laterais nos textos da apresentação */
+            .hero-text h1 {
+                font-size: 2.2rem;
+                padding: 0 10px;
+            }
+
+            .hero-text h1 span {
+                font-size: 1.5rem;
+            }
+
+            .hero-text p {
+                margin-bottom: 20px;
+                padding: 0 15px; /* Margem extra para o texto não colar nas bordas do celular */
+            }
+
+            .specialties-grid {
+                grid-template-columns: 1fr; 
+                gap: 40px;
+                padding: 0 15px; /* Margem para a grade inteira */
+            }
+
+            /* Especialidades: Ícone em cima e texto centralizado abaixo */
+            .specialty-card {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                gap: 15px;
+            }
+            
+            .specialty-card i {
+                margin-bottom: 0;
+                font-size: 3rem; /* Mantém o ícone grande para dar destaque */
+            }
+
+            .cta-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px 20px;
+                margin: 40px 15px; /* Adiciona margem lateral no banner */
+            }
+
+            .cta-text {
+                flex-direction: column;
+                margin-bottom: 20px;
+            }
+
+            .gallery-grid, .gallery-row-2 {
+                grid-template-columns: 1fr;
+                grid-column: span 1;
+            }
+
+            .location {
+                flex-direction: column;
+                padding: 30px 20px;
+                text-align: center;
+                margin: 40px 15px; /* Adiciona margem lateral na caixa de localização */
+            }
+
+            .location-text h3 {
+                justify-content: center;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .footer-contact {
+                flex-direction: column;
+                gap: 10px;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+	<header>
+		<div class="container header-content">
+			<button class="menu-toggle"><i class="fas fa-bars"></i></button>
+			
+			<!-- Novo Logo SVG do Cabeçalho -->
+			<div class="logo">
+				<a href="#">
+					<img src="img/logo-cabecalho.svg" alt="Logo Dra. Driele Gonçalves" class="logo-img">
+				</a>
+			</div>
+
+			<a href="#" class="btn btn-dark header-btn">Agendar Consulta <i class="fab fa-whatsapp"></i></a>
+		</div>
+	</header>
+
+    <section class="hero container">
+        <div class="hero-text">
+            <h1>Clínica Odontológica Dra. Driele Gonçalves: <span>Excelência e Cuidado na Barra Funda</span></h1>
+            <p>Fundada pela Dra. Driele Gonçalves, profissional com 14 anos de experiência na área, a nossa clínica nasce com o objetivo de oferecer serviços odontológicos de máxima qualidade, segurança e respeito a toda a população de São Paulo.</p>
+            <p>Localizada no coração do bairro da Barra Funda, a clínica se destaca por unir tradição e inovação.</p>
+            <p>Acreditamos que a odontologia vai muito além dos tratamentos técnicos: trata-se de gerar conforto, bem-estar, encantamento e devolver a autoestima aos nossos pacientes em cada detalhe.</p>
+            <a href="#" class="btn btn-dark" style="margin-top: 15px;">Agendar Consulta <i class="fab fa-whatsapp"></i></a>
+        </div>
+        <div class="hero-image">
+			<img src="img/dra-driele.jpg" alt="Dra. Driele Gonçalves">
+        </div>
+    </section>
+
+    <section class="specialties container">
+        <h2>Nossas Especialidades</h2>
+        <div class="specialties-grid">
+            <div class="specialty-card">
+                <i class="fas fa-tooth"></i>
+                <div>
+                    <h3>Ortodontia</h3>
+                    <p>Nosso foco principal de excelência nos últimos anos.</p>
+                </div>
+            </div>
+            <div class="specialty-card">
+                <i class="fas fa-teeth-open"></i>
+                <div>
+                    <h3>Implantes e Próteses</h3>
+                    <p>Reabilitação oral segura.</p>
+                </div>
+            </div>
+            <div class="specialty-card">
+                <i class="fas fa-tooth" style="opacity: 0.7;"></i>
+                <div>
+                    <h3>Endodontia</h3>
+                    <p>Tratamentos de canal humanizados e sem dor.</p>
+                </div>
+            </div>
+            <div class="specialty-card">
+                <i class="fas fa-magic"></i>
+                <div>
+                    <h3>Dentística e Cirurgias</h3>
+                    <p>Estética e saúde para o seu sorriso.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="container">
+        <div class="cta-banner">
+            <div class="cta-text">
+                <i class="far fa-calendar-alt"></i>
+                <div>
+                    <h3>Estamos prontos para iniciar este novo capítulo junto com você.</h3>
+                    <p>Agende sua consulta e conheça uma nova era na odontologia.</p>
+                </div>
+            </div>
+            <a href="#" class="btn btn-light">Agendar Consulta <i class="fab fa-whatsapp"></i></a>
+        </div>
+    </section>
+
+    <section class="gallery container">
+        <h2>Nossa Clínica</h2>
+		<div class="gallery-grid">
+			<img src="img/clinica-recepcao.jpg" alt="Recepção">
+			<img src="img/clinica-consultorio.jpg" alt="Consultório">
+			
+			<div class="gallery-row-2">
+				<img src="img/clinica-equipamentos.jpg" alt="Equipamentos">
+				<img src="img/clinica-atendimento.jpg" alt="Sala de Atendimento">
+			</div>
+		</div>
+    </section>
+
+    <section class="container">
+        <div class="location">
+            <div class="location-text">
+                <h3><i class="fas fa-map-marker-alt"></i> Onde Estamos</h3>
+                <p>Rua Brigadeiro Galvão, 630<br>Barra Funda - São Paulo/SP<br>CEP 01151-000</p>
+                <a href="#" class="btn btn-dark">Ver no Google Maps <i class="fas fa-map-marker-alt"></i></a>
+            </div>
+			<div class="location-map">
+				<!-- Iframe do Google Maps -->
+				<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3657.8529244031644!2d-46.66276852373722!3d-23.53775956072175!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ce58284568600b%3A0xc6e4693cb8402db2!2sR.%20Brig.%20Galv%C3%A3o%2C%20630%20-%20Barra%20Funda%2C%20S%C3%A3o%20Paulo%20-%20SP%2C%2001151-000!5e0!3m2!1spt-BR!2sbr!4v1719269412154!5m2!1spt-BR!2sbr" width="100%" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+			</div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+			<div class="footer-logo">
+				<!-- Novo Logo SVG do Rodapé -->
+				<img src="img/logo-rodape.svg" alt="Logo Dra. Driele Gonçalves" class="footer-logo-img">
+			</div>	
+                <div class="footer-contact">
+                    <span><i class="fab fa-whatsapp"></i> (11) 99999-9999</span>
+                    <span><i class="fab fa-instagram"></i> @dradrielegoncalves.odonto</span>
+                </div>
+            </div>
+            <div class="copyright">
+                © 2024 Dra. Driele Gonçalves Odontologia. Todos os direitos reservados.
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
